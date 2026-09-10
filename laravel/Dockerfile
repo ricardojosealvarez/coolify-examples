@@ -1,4 +1,14 @@
-FROM composer:2 AS vendor
+FROM composer:2 AS composer-bin
+
+FROM php:8.2-cli AS vendor
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        git \
+        unzip \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --from=composer-bin /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
 
