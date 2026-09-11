@@ -1,0 +1,2 @@
+T04 controlled redeploy marker
+Created for Docker Compose redeploy behavior validation.
